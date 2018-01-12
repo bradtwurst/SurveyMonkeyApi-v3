@@ -34,7 +34,7 @@ namespace SurveyMonkey
         {
             string endPoint = String.Format("/surveys/{0}/collectors", surveyId);
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<Collector>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Collector>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Collector)o);
         }
 
@@ -62,7 +62,7 @@ namespace SurveyMonkey
         {
             string endPoint = String.Format("/collectors/{0}/messages", collectorId);
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<Message>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Message>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Message)o);
         }
 
@@ -115,7 +115,7 @@ namespace SurveyMonkey
                 String.Format("/collectors/{0}/messages/{1}/recipients", collectorId, messageId) :
                 String.Format("/collectors/{0}/recipients", collectorId);
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<Recipient>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Recipient>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Recipient)o);
         }
 

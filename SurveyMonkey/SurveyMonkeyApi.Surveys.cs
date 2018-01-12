@@ -24,7 +24,7 @@ namespace SurveyMonkey
         {
             string endPoint = "/surveys";
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<Survey>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Survey>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Survey)o);
         }
 
@@ -61,7 +61,7 @@ namespace SurveyMonkey
         {
             string endPoint = "/survey_categories";
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<SurveyCategory>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<SurveyCategory>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (SurveyCategory)o);
         }
 
@@ -80,7 +80,7 @@ namespace SurveyMonkey
         {
             string endPoint = "/survey_templates";
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<SurveyTemplate>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<SurveyTemplate>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (SurveyTemplate)o);
         }
 
@@ -99,7 +99,7 @@ namespace SurveyMonkey
         {
             string endPoint = String.Format("/surveys/{0}/pages", surveyId);
             const int maxResultsPerPage = 100;
-            var results = Page(settings, endPoint, typeof(List<Page>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Page>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Page)o);
         }
 
@@ -127,7 +127,7 @@ namespace SurveyMonkey
         {
             string endPoint = String.Format("/surveys/{0}/pages/{1}/questions", surveyId, pageId);
             const int maxResultsPerPage = 100;
-            var results = Page(settings, endPoint, typeof(List<Question>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Question>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Question)o);
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SurveyMonkey.Enums;
 
 namespace SurveyMonkey.RequestSettings
@@ -41,5 +42,6 @@ namespace SurveyMonkey.RequestSettings
         public TotalTimeUnitsOption? TotalTimeUnits { get; set; }
         public SortOrderOption? SortOrder { get; set; }
         public SortByOption? SortBy { get; set; }
+        public Dictionary<string, object> CustomQuery { get; set; }
     }
 }

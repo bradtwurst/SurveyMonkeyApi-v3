@@ -33,7 +33,7 @@ namespace SurveyMonkey
         {
             string endPoint = "/groups";
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<Group>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Group>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Group) o);
         }
 
@@ -61,7 +61,7 @@ namespace SurveyMonkey
         {
             string endPoint = String.Format("/groups/{0}/members", groupId);
             const int maxResultsPerPage = 1000;
-            var results = Page(settings, endPoint, typeof(List<Member>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Member>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Member)o);
         }
         

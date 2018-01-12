@@ -24,7 +24,7 @@ namespace SurveyMonkey
         {
             string endPoint = "/webhooks";
             const int maxResultsPerPage = 100;
-            var results = Page(settings, endPoint, typeof(List<Webhook>), maxResultsPerPage);
+            var results = Page(settings, endPoint, typeof(List<Webhook>), maxResultsPerPage, customRequestData: null);
             return results.ToList().ConvertAll(o => (Webhook)o);
         }
 

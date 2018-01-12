@@ -201,7 +201,7 @@ namespace SurveyMonkey
             _lastRequestTime = DateTime.UtcNow; //Also setting here as otherwise if an exception is thrown while making the request it wouldn't get set at all
         }
 
-        private IEnumerable<IPageableContainer> Page(IPagingSettings settings, string url, Type type, int maxResultsPerPage)
+        private IEnumerable<IPageableContainer> Page(IPagingSettings settings, string url, Type type, int maxResultsPerPage, RequestData customRequestData)
         {
             if (settings.Page.HasValue || settings.PerPage.HasValue)
             {

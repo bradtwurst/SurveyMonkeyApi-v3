@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using SurveyMonkey.Containers;
+using SurveyMonkey.Helpers;
 using SurveyMonkey.RequestSettings;
 
 namespace SurveyMonkey
@@ -89,12 +90,15 @@ namespace SurveyMonkey
             return GetResponseListPager(collectorId, ObjectType.Collector, settings, true);
         }
 
-        private List<Response> GetResponseListPager(long id, ObjectType objectType, IPagingSettings settings, bool details)
+        private List<Response> GetResponseListPager(long id, ObjectType objectType, GetResponseListSettings settings, bool details)
         {
             var bulk = details ? "/bulk" : String.Empty;
             string endPoint = String.Format("/{0}s/{1}/responses{2}", objectType.ToString().ToLower(), id, bulk);
             int maxResultsPerPage = details ? 100 : 1000;
-            var results = Page(settings, endPoint, typeof(List<Response>), maxResultsPerPage);
+            var requestData = settings.CustomQuery != null
+                ? new RequestData(settings.CustomQuery)
+                : null;
+            var results = Page(settings, endPoint, typeof(List<Response>), maxResultsPerPage, requestData);
             return results.ToList().ConvertAll(o => (Response)o);
         }
     }
